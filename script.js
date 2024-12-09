@@ -246,10 +246,12 @@ async function recuperPrix() {
 
       // Ajouter une couleur de fond au conteneur
       currencyDiv.style.backgroundColor = colors[Math.floor(Math.random() * 9)];
+      console.log(currencyDiv.style.backgroundColor);
 
       // Ajouter les informations
       currencyDiv.innerHTML = `
         <h3>${key}</h3>
+        <hr />
         <p class="price"><strong>15 min moyenne :</strong> ${currency["15m"]}</p>
         <p><strong>Dernier prix :</strong> ${currency.last}</p>
         <p><strong>Achat :</strong> ${currency.buy}</p>
