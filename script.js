@@ -198,6 +198,21 @@ for (key in currencies) {
   `;
 }
 
+// color
+
+const colors = [
+  "#FFDDC1", // Beige
+  "#FFABAB", // Rose
+  "#FFC3A0", // Orange clair
+  "#D5AAFF", // Violet
+  "#85E3FF", // Bleu clair
+  "#B9FBC0", // Vert clair
+  "#FF9CEE", // Rose vif
+  "#DCD3FF", // Lavande
+  "#FFC6FF", // Magenta
+  "#B5FDC1", // Vert pastel
+];
+
 // api fetch
 
 let url = "https://blockchain.info/ticker";
@@ -228,6 +243,9 @@ async function recuperPrix() {
       // Créer un conteneur pour chaque devise
       const currencyDiv = document.createElement("div");
       currencyDiv.className = "currency";
+
+      // Ajouter une couleur de fond au conteneur
+      currencyDiv.style.backgroundColor = colors[Math.floor(Math.random() * 9)];
 
       // Ajouter les informations
       currencyDiv.innerHTML = `
