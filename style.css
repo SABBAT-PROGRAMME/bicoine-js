@@ -15,15 +15,36 @@ nav {
   border-radius: 10%;
 }
 
-/* container */
-
 .container {
   display: flex;
   justify-content: space-around;
-  padding: 1rem;
+  padding: 10px;
 }
 
-.container-card {
+.card {
+  padding: 5px;
+}
+
+span {
+  color: red;
+}
+.list {
+  border: 1px solid black;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+#currencies-container {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.currency {
+  border: 1px solid black;
+  margin: 5px;
+  padding: 5px;
+}
+
+.price {
+  color: green;
 }

@@ -1,7 +1,13 @@
 // currencies
 
 const currencies = [
-  { symbol: "ARS", name: "Peso argentin", country: "Argentine", flag: "🇦🇷" },
+  {
+    id: 0,
+    symbol: "ARS",
+    name: "Peso argentin",
+    country: "Argentine",
+    flag: "🇦🇷",
+  },
   {
     id: 1,
     symbol: "AUD",
@@ -164,33 +170,81 @@ const currencies = [
   },
 ];
 
-// selecteur
+let list = document.querySelector(".list");
 
-// Sélection de la liste <ol>
-const currencyList = document.querySelector("#currency-list");
+for (key in currencies) {
+  let currency = currencies[key];
+  let id = currency.id;
+  let symbol = currency.symbol;
+  let name = currency.name;
+  let country = currency.country;
+  let flag = currency.flag;
 
-// Parcourir chaque devise
-currencies.forEach((currency) => {
-  // Création d'un élément <li> pour chaque devise
-  const listItem = document.createElement("li");
-  listItem.className =
-    "list-group-item d-flex justify-content-between align-items-start";
+  console.log(id);
+  console.log(symbol);
+  console.log(name);
+  console.log(country);
+  console.log(flag);
+  console.log("\n");
 
-  // Contenu principal de l'élément
-  const contentDiv = document.createElement("div");
-  contentDiv.className = "ms-2 me-auto";
-
-  // Texte avec le symbole, le nom, le pays et le drapeau
-  contentDiv.innerHTML = `
-    <div class="fw-bold"><b>${currency.symbol}</b></div>
-    <span class="text-muted currencies">${currency.name}</span>: 
-    <span class="country">${currency.country}</span> 
-    <span class="flag">${currency.flag}</span>
+  list.innerHTML += `
+    <div class="list">
+      <span class="id">${id}</span>
+      <span class="symbol">${symbol}</span>
+      <span class="name">${name}</span>
+      <span class="country">${country}</span>
+      <span class="flag">${flag}</span>
+    </div>
   `;
+}
 
-  // Ajout du contenu à l'élément <li>
-  listItem.appendChild(contentDiv);
+// api fetch
 
-  // Ajout de l'élément <li> à la liste <ol>
-  currencyList.appendChild(listItem);
-});
+let url = "https://blockchain.info/ticker";
+
+// Fonction pour récupérer les données
+async function recuperPrix() {
+  try {
+    const requete = await fetch(url, { method: "GET" });
+
+    if (!requete.ok) {
+      throw new Error("Une erreur est survenue !");
+    }
+
+    const reponse = await requete.json();
+
+    // Cibler le conteneur principal
+    const container = document.querySelector("#currencies-container");
+
+    // Vider le conteneur avant d'ajouter les nouvelles données
+    container.innerHTML = "";
+
+    // Parcourir les devises et créer des éléments dynamiques
+    for (const key in reponse) {
+      const currency = reponse[key];
+
+      console.log(currency);
+
+      // Créer un conteneur pour chaque devise
+      const currencyDiv = document.createElement("div");
+      currencyDiv.className = "currency";
+
+      // Ajouter les informations
+      currencyDiv.innerHTML = `
+        <h3>${key}</h3>
+        <p class="price"><strong>15 min moyenne :</strong> ${currency["15m"]}</p>
+        <p><strong>Dernier prix :</strong> ${currency.last}</p>
+        <p><strong>Achat :</strong> ${currency.buy}</p>
+        <p><strong>Vente :</strong> ${currency.sell}</p>
+      `;
+
+      // Ajouter ce conteneur au conteneur principal
+      container.appendChild(currencyDiv);
+    }
+  } catch (error) {
+    alert(error.message);
+  }
+}
+
+// Actualiser toutes les 5 secondes
+setInterval(recuperPrix, 5000);

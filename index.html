@@ -42,44 +42,54 @@
     </header>
 
 
-    <!-- main -->
+  <div class="container">
 
-    <main>
-      <div class="container">
-        <div class="container-card">
-            <div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
-                <div class="card-header">USD</div>
-                <div class="card-body">
-                  <h5 class="card-title"><button type="button" class="btn btn-warning">15min</button> : 4521154</h5>
-                  <h5 class="card-title"><button type="button" class="btn btn-info">Last</button> : 5841541</h5>
-                  <hr>
-                  <h5 class="card-title"><span><button type="button" class="btn btn-success">Buy</button> </span>: 4521154</h5>
-                  <h5 class="card-title"><span><button type="button" class="btn btn-secondary">Sell</button></span> : 5841541</h5>
-                </div>
-            </div>
+    <div class="card">
+      
+      
+      <div id="currencies-container">
+        <!-- Contenu par défaut -->
+        <div class="currency">
+          <h3>USD ($)</h3>
+          <p><strong>15 min moyenne :</strong> Chargement...</p>
+          <p><strong>Dernier prix :</strong> Chargement...</p>
+          <p><strong>Achat :</strong> Chargement...</p>
+          <p><strong>Vente :</strong> Chargement...</p>
         </div>
-        <div class="documentation">
-            <h2>Documentation</h2>
-
-            <h3>Tendance Forex</h3>
-            <p>
-                <span class="text-danger"> « 15m »</span> : Taux de conversion moyen des 15 dernières minutes.
-                <br>
-                <span class="text-danger">« Last »</span> : Dernier taux de conversion enregistré.
-                <br>
-               <span><span class="text-danger">« Buy »</span> : Taux de conversion pour l'achat.
-                <br>
-               <span><span class="text-danger">« Sell »</span> : Taux de conversion pour la vente.
-                <br>
-                <span class="text-danger">« Symbol »</span> : Symbole de la devise.
-            </p>
-
-            <h3>Liste des devises avec leurs symboles, noms et pays associés :</h3>
-            <ol id="currency-list" class="list-group list-group-numbered"></ol>
-        </div>
+        <div class="currency">
+          <h3>EUR (€)</h3>
+          <p><strong>15 min moyenne :</strong> Chargement...</p>
+          <p><strong>Dernier prix :</strong> Chargement...</p>
+          <p><strong>Achat :</strong> Chargement...</p>
+          <p><strong>Vente :</strong> Chargement...</p>
         </div>
       </div>
-    </main>
+      
+
+    </div>
+
+    <div class="documentation">
+      <h3>Documentation</h3>
+
+      <ul>
+        <li><span>15m</span> : Taux de conversion moyen des 15 dernières minutes.</li>
+        <li><span>Last</span> : Dernier taux de conversion enregistré.</li>
+        <li><span>Buy</span> : Taux de conversion pour l'achat.</li>
+        <li><span>Sell</span> : Taux de conversion pour la vente.</li>
+        <li><span>symbol</span> : Symbole de la devise.</li>
+      </ul>
+
+
+      <h3>Listes des devise</h3>
+      <div class="list">
+        
+      </div>
+    </div>
+
+    
+  </div>
+
+   
 
 
     <!-- script -->
